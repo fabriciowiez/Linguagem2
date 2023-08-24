@@ -1,12 +1,15 @@
-class Lampada:
+class LampadaTresEstados:
+    luz = None
+    def brilhoLuz(self, luz):
+        if luz == 0 : self.luz = 'Apagada'
+        elif luz >= 1 and luz <= 99 : self.luz = 'Meia Luz'
+        else : self.luz = 'Acesa'
+    def estaLigada(self):
+        if self.luz == 'Acesa' : return True
 
-    def estaLigada(self, luz):
-        if(luz == 0) : return 0
-        else : return 1
-
-luz = int(input("Informe 1 para luz ligada e 0 para desligada: "))
-l = Lampada()
-ligada = l.estaLigada(luz)
-
-if (ligada): print("A lampada esta ligada")
-else : print("A lampada esta desligada") 
+luz = int(input("Digite um valor para a luz da lampada: "))
+l = LampadaTresEstados()
+l.brilhoLuz(luz)
+print(f"Estado da lampada: {l.luz}")
+if l.estaLigada() : print("A lampada esta ligada")
+else : print("A lampada esta apagada")
