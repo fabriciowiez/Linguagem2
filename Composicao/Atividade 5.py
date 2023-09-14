@@ -6,7 +6,7 @@ class Pessoa:
         self.mae = mae
 
     def addFilho(self, filho):
-        if isinstance(filho, Pessoa): #isinstance verifica se o objeto 'filho' é do tipo 'Pessoa'
+        if isinstance(filho, Pessoa): #isinstance verifica se o objeto 'filho' é do tipo classe 'Pessoa'
             if filho.pai is None:
                 filho.pai = self
             if filho.mae is None:
