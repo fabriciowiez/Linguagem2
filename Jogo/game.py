@@ -4,18 +4,27 @@ from circulos import Circulos
 from mouse import Mouse
 from musica import Musica
 from draw import Desenhos
+from vitoria import Vitoria
+from derrota import Derrota
 
 STEP = 2
 
 class Game:
     def __init__(self):
-       pyxel.init(160, 120)
-       pyxel.load("desenhos.pyxres")
-       self.mouse = Mouse()
-       self.circulos = Circulos()   
-       self.musica = Musica()
-       self.draw = Desenhos()
-       pyxel.run(self.update, self.desenhar)
+        try:
+            pyxel.init(160, 120)
+            pyxel.load("desenhos.pyxres")
+            self.mouse = Mouse()
+            self.circulos = Circulos()   
+            self.musica = Musica()
+            self.draw = Desenhos()
+            self.vitoria = Vitoria()
+            self.derrota = Derrota()
+
+            pyxel.run(self.update, self.desenhar)
+        except Exception as e:
+            print(f"Ocorreu um erro durante a inicialização do jogo: {e}")
+
        
     def update(self):
         if pyxel.btnp(pyxel.KEY_Q):
@@ -47,25 +56,29 @@ class Game:
                 pyxel.sleep5 = True
             
     def update_posicoes(self):
-        if not pyxel.sleep1:
-                pyxel.x1 = pyxel.x1 + random.uniform(-STEP, STEP)
-                pyxel.y1 = pyxel.y1 + random.uniform(-STEP, STEP)
-            
-        if not pyxel.sleep2:
-                pyxel.x2 = pyxel.x2 + random.uniform(-STEP, STEP)
-                pyxel.y2 = pyxel.y2 + random.uniform(-STEP, STEP)
+        try:
+            if not pyxel.sleep1:
+                    pyxel.x1 = pyxel.x1 + random.uniform(-STEP, STEP)
+                    pyxel.y1 = pyxel.y1 + random.uniform(-STEP, STEP)
+                
+            if not pyxel.sleep2:
+                    pyxel.x2 = pyxel.x2 + random.uniform(-STEP, STEP)
+                    pyxel.y2 = pyxel.y2 + random.uniform(-STEP, STEP)
 
-        if not pyxel.sleep3:
-                pyxel.x3 = pyxel.x3 + random.uniform(-STEP, STEP)
-                pyxel.y3 = pyxel.y3 + random.uniform(-STEP, STEP)
-            
-        if not pyxel.sleep4:
-                pyxel.x4 = pyxel.x4 + random.uniform(-STEP, STEP)
-                pyxel.y4 = pyxel.y4 + random.uniform(-STEP, STEP)
+            if not pyxel.sleep3:
+                    pyxel.x3 = pyxel.x3 + random.uniform(-STEP, STEP)
+                    pyxel.y3 = pyxel.y3 + random.uniform(-STEP, STEP)
+                
+            if not pyxel.sleep4:
+                    pyxel.x4 = pyxel.x4 + random.uniform(-STEP, STEP)
+                    pyxel.y4 = pyxel.y4 + random.uniform(-STEP, STEP)
 
-        if not pyxel.sleep5:
-                pyxel.x5 = pyxel.x5 + random.uniform(-STEP, STEP)
-                pyxel.y5 = pyxel.y5 + random.uniform(-STEP, STEP)
+            if not pyxel.sleep5:
+                    pyxel.x5 = pyxel.x5 + random.uniform(-STEP, STEP)
+                    pyxel.y5 = pyxel.y5 + random.uniform(-STEP, STEP)
+
+        except Exception as e:
+            print(f"Ocorreu um erro na atualização das posições: {e}")
 
     def desenhar(self):
         pyxel.cls(0)

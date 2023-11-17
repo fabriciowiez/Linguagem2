@@ -1,7 +1,11 @@
 import pyxel
+from vitoria import Vitoria
+from derrota import Derrota
 
 class Desenhos:
     def __init__(self):
+        self.vitoria = Vitoria()
+        self.derrota = Derrota()
         self.x = 0
         self.y = 0
         self.RADIUS = 2
@@ -39,9 +43,7 @@ class Desenhos:
 
     def desenha_textos(self):
         if pyxel.game_over:
-            self.x = 80 - 5 * pyxel.FONT_WIDTH
-            pyxel.text(self.x, 60, "GAME OVER!", pyxel.COLOR_WHITE)
+            self.derrota.exibir_texto()
 
         if pyxel.sleep1 == pyxel.sleep2 == pyxel.sleep3 == pyxel.sleep4 == pyxel.sleep5 == True:
-            self.x = 80 - 5 * pyxel.FONT_WIDTH
-            pyxel.text(self.x, 60, "VITORIA!:)", pyxel.COLOR_DARK_BLUE)
+            self.vitoria.exibir_texto()
